@@ -8,7 +8,7 @@ Image captioning has many potential applications in real life. A noteworthy one 
 
 
 
-
+<img src="Images/Sample IC.jpg" style="width:800px;height:300px;">
 
 
 
