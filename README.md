@@ -48,6 +48,6 @@ The images in this dataset are bifurcated as follows:
 	Validation Set — 1000 images
 	Test Set — 1000 images
 
+## Understanding the Data 
 
-
-
+The Flickr8k dataset also consists of some text files included as part of the dataset. One of the files is the “Flickr8k.token.txt” which contains the name of each image along with the 5 captions. Thus every line contains the <Image name>#i <Caption>, (where 0≤i≤4 ) i.e. the name of the image, caption number (0 to 4) and the actual caption. Table 1 shows the format in which data is given in this text file. 
