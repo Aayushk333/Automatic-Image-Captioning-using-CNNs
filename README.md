@@ -63,3 +63,14 @@ When we deal with text, we generally perform some basic cleaning like lower-casi
 * All the text has been converted to lower case so that ‘the’ and ‘The’ are treated as the same words. 
 * Numbers, Punctuations and special symbols like ‘@‘, ‘#’ and so on have been removed, so that we generate sentences without any punctuation or symbols. This is beneficial as it helps to reduce the vocabulary size. Small vocabulary size means less number of neurons and hence less parameters to be computed and hence less overfitting. 
 
+### 3.1 Vocabulary Creation 
+
+Next step is to create a vocabulary of all the unique words present across all the 8000*5 (i.e. 40000) image captions in the dataset. To make the vocabulary set, a python inbuilt data structure called **SET** has been used. Set is used to store all the unique words in the dataset. Total unique words that are there in the dataset are 8424. However, many of these words will occur very few times , say 1, 2 or 3 times. Since it is a predictive model, we would not like to have all the words present in our vocabulary but the words which are more likely to occur or which are common. This helps the model become more robust to outliers and make less mistakes. Hence a threshold has been chosen and if the frequency of the word is less than the threshold frequency, then that particular word has been removed from our vocabulary set. Finally for storing the words and their corresponding frequencies, another python data structure called **Counter** has been used. 
+
+**Note : A counter is a subclass of dict. Therefore it is an unordered collection where elements and their respective count are stored as a dictionary. It is imported from the collections module.**
+
+*After applying the frequency threshold filter, we get the total vocabulary size as 1652 words (having frequency more than 10).*
+
+
+
+
