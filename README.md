@@ -1,5 +1,7 @@
 # Automatic Image Captioning Using CNNs
 
+# Chapter I
+
 ## 1. Introduction
 
 Caption generation is a challenging artificial intelligence problem where a textual description must be generated for a given photograph. Image captioning, i.e., describing the content observed in an image, has received a significant amount of attention in recent years. It requires both methods from computer vision to understand the content of the image and a language model from the field of natural language processing to turn the understanding of the image into words in the right order. Recently, deep learning methods have achieved state-of-the-art results on examples of this problem. 
@@ -34,6 +36,18 @@ This project aims at generating captions for images using neural language models
 
 ## 4. Summary 
 Image captioning is an important task, applicable to virtual assistants, editing tools, image indexing, and support of the disabled. In recent years significant progress has been made in image captioning, using Recurrent Neural Networks powered by long-short-term-memory (LSTM) units. Despite mitigating the vanishing gradient problem, and despite their compelling ability to memorize dependencies, LSTM units are complex and inherently sequential across time. To address this issue, recent work has shown benefits of convolutional networks for machine translation and conditional image generation. The task of image captioning can be divided into two modules logically – one is an image based model – which extracts the features and nuances out of our image, and the other is a language based model – which translates the features and objects given by our image based model to a natural sentence. Chapter 2 explains the detailed methodology of this project including Data Collection, Data Cleaning, Loading the training set, Data Preprocessing — Images, Data Preprocessing — Captions, Word Embeddings and the Model Architecture. Chapter 3 discusses about the results obtained and the inferences drawn from them. This chapter lists down the prediction made by the model on test data i.e. the captions generated given the test image. The chapter also lists down instances when the model is not able to generate relevant captions from the image. Chapter 4 concludes the project and discusses the drawbacks and future scope of the same. We must understand that the images used for testing must be semantically related to those used for training the model. For example, if the model is trained on images of cats, dogs, etc. then it should not be tested or used to generate captions for images of air planes, waterfalls, etc. This is an example where the distribution of the train and test sets will be very different and in such cases no Machine Learning model would give good performance.
+
+# Chapter II
+
+## Data Collection 
+
+There are many open source datasets available for this problem, like Flickr 8k [5] (containing8k images), Flickr 30k [6] (containing 30k images), MS COCO [7] (containing 180k images), etc. But a good dataset to use when getting started with image captioning is the Flickr8K dataset. The reason is because it is realistic and relatively small so that we can download it and build models on our workstation using a CPU. Flickr8k is a labeled dataset consisting of 8000 photos with 5 captions for each photos. It includes images obtained from the Flickr website. Another advantage of using Flickr8k is that data is properly labelled. For each image 5 captions have been provided. The images were chosen from six different Flickr groups, and tend not to contain any well-known people or locations, but were manually selected to depict a variety of scenes and situations.  
+The images in this dataset are bifurcated as follows:
+
+	Training Set — 6000 images
+	Validation Set — 1000 images
+	Test Set — 1000 images
+
 
 
 
