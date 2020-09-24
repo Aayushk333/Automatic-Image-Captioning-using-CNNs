@@ -39,7 +39,7 @@ Image captioning is an important task, applicable to virtual assistants, editing
 
 # Chapter II
 
-## Data Collection 
+## 1. Data Collection 
 
 There are many open source datasets available for this problem, like Flickr 8k [5] (containing8k images), Flickr 30k [6] (containing 30k images), MS COCO [7] (containing 180k images), etc. But a good dataset to use when getting started with image captioning is the Flickr8K dataset. The reason is because it is realistic and relatively small so that we can download it and build models on our workstation using a CPU. Flickr8k is a labeled dataset consisting of 8000 photos with 5 captions for each photos. It includes images obtained from the Flickr website. Another advantage of using Flickr8k is that data is properly labelled. For each image 5 captions have been provided. The images were chosen from six different Flickr groups, and tend not to contain any well-known people or locations, but were manually selected to depict a variety of scenes and situations.  
 The images in this dataset are bifurcated as follows:
@@ -48,9 +48,18 @@ The images in this dataset are bifurcated as follows:
 	Validation Set — 1000 images
 	Test Set — 1000 images
 
-## Understanding the Data 
+## 2.Understanding the Data 
 
 The Flickr8k dataset also consists of some text files included as part of the dataset. One of the files is the “Flickr8k.token.txt” which contains the name of each image along with the 5 captions. Thus every line contains the <Image name>#i <Caption>, (where 0≤i≤4 ) i.e. the name of the image, caption number (0 to 4) and the actual caption. Table 1 shows the format in which data is given in this text file.
 	
 <img src="Image/Flickr8k.token.txt Sample .png" style="width:800px;height:300px;">
 	
+## 3. Data Cleaning 
+
+When we deal with text, we generally perform some basic cleaning like lower-casing all the words (otherwise“hello” and “Hello” will be regarded as two separate words), removing special tokens (like ‘%’, ‘$’, ‘#’, etc.), eliminating words which contain numbers (like ‘hey199’, etc.).  In  this project, while text cleaning : 
+
+* Stop words have not been removed because if we don’t teach our model how to insert stop words like a, an, the, etc , it would not generate correct english.
+* Stemming has not been performed because if we feed in stemmed words, the model is also going to learn those stemmed words . So for example, if the word is ‘running’ and we stem it and make it ‘run’ , the model will predict sentences like “Dog is run” instead of “Dog is running”. 
+* All the text has been converted to lower case so that ‘the’ and ‘The’ are treated as the same words. 
+* Numbers, Punctuations and special symbols like ‘@‘, ‘#’ and so on have been removed, so that we generate sentences without any punctuation or symbols. This is beneficial as it helps to reduce the vocabulary size. Small vocabulary size means less number of neurons and hence less parameters to be computed and hence less overfitting. 
+
