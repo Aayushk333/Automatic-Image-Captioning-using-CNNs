@@ -75,8 +75,8 @@ Next step is to create a vocabulary of all the unique words present across all t
 
 The dataset also includes “Flickr_8k.trainImages.txt” file which contains the name of the images (or image ids) that belong to the training set. So all the training image ids have been mapped with the captions and stored in a dictionary. Another important step while creating the dictionary was to add a **‘startseq’ and ‘endseq’** token in every caption, since RNN or LSTM based layers have been used for generating text. In such layers, the generation of text takes place such that the output of a previous unit acts as an input to the next unit. So such model can keep generating words for infinite time steps. Hence we need to specify a way which tells the model to stop generating words further. This is accomplished by adding two tokens in the captions i.e. 
 
-*‘startseq’ -> This is a start sequence token which was added at the start of every caption.
-*‘endseq’ -> This is an end sequence token which was added at the end of every caption.
+* ‘startseq’ -> This is a start sequence token which was added at the start of every caption.
+* ‘endseq’ -> This is an end sequence token which was added at the end of every caption.
 
 The model will be able to generate this token only if we have it in our training set. 
 
