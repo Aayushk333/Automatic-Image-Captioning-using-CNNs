@@ -16,9 +16,9 @@ Image captioning has many potential applications in real life. A noteworthy one 
 
 This figure would be labelled by different people as the following sentences : 
 
-A man and a girl sit on the ground and eat .
-A man and a little girl are sitting on a sidewalk near a blue bag and eating .
-A man wearing a black shirt and a little girl wearing an orange dress share a treat .
+* A man and a girl sit on the ground and eat .
+* A man and a little girl are sitting on a sidewalk near a blue bag and eating .
+* A man wearing a black shirt and a little girl wearing an orange dress share a treat .
 
 But when it comes to machines, automatically generating this textual description from an artificial system is what is called Image Captioning. The task is straightforward – the generated output is expected to describe in a single sentence what is shown in the image – the objects present, their properties, the actions being performed and the interaction between the objects, etc. But to replicate this behaviour in an artificial system is a huge task, as with any other image processing problem and hence the use of complex and advanced techniques such as Deep Learning to solve the task.
 
@@ -110,3 +110,8 @@ The earlier features of a ConvNet contain more generic features (e.g. edge dete
 In this project, transfer learning has been used to extract features from images. The pre-trained model used is the ResNet model which is a model trained on ImageNet dataset [9]. It has the power of classifying upto 1000 classes. ResNet model has skip connections which means the gradients can flow from one layer to another. This means the gradients can also backpropagate easily and hence ResNet model does not suffer from vanishing gradient problem.  Figure 2 shows the architecture of the ResNet model. 
 
 <img src="Image/ResNet Architecture.png" style="width:800px;height:300px;">
+
+The whole ResNet model has not been trained from scratch. The Convolutional base has been used as a feature extractor. After the convolutional base, a Global average pooling layer has been used to reduce the size of the activation map. Global Average Pooling takes a single channel at a time and averages all the values in that channel to convert it into a single value. The convolutional base produces an activation map of (7,7,2048). The Global Average Pooling layer takes the average of 7*7 (=49) pixels across all the 2048 channels and reduces the size of the activation map to (1,1,2048). So given an image, the model converts it into 2048 dimensional vector. These feature vectors are generated for all the images of the training set and later will be sent to the final image captioning model to make predictions. Similarly we encode all the test images and save their 2048 length vectors on the disk to be used later. 
+
+
+
