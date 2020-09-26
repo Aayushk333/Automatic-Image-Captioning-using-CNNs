@@ -10,7 +10,7 @@ Image captioning has many potential applications in real life. A noteworthy one 
 
 
 
-<img src="Image/Sample IC.jpg" style="width:800px;height:300px;">
+<img src="Image/Sample IC.jpg" style="width:1000px;height:500px;">
 
 
 
@@ -108,3 +108,5 @@ The earlier features of a ConvNet contain more generic features (e.g. edge dete
 ### 4.2 Image Feature Extraction 
 
 In this project, transfer learning has been used to extract features from images. The pre-trained model used is the ResNet model which is a model trained on ImageNet dataset [9]. It has the power of classifying upto 1000 classes. ResNet model has skip connections which means the gradients can flow from one layer to another. This means the gradients can also backpropagate easily and hence ResNet model does not suffer from vanishing gradient problem.  Figure 2 shows the architecture of the ResNet model. 
+
+<img src="Image/ResNet Architecture.png" style="width:800px;height:300px;">
