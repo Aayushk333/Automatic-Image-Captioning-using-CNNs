@@ -80,5 +80,31 @@ The dataset also includes “Flickr_8k.trainImages.txt” file which contains th
 
 The model will be able to generate this token only if we have it in our training set. 
 
+## 4. Data Pre-processing : Images 
+
+Images are nothing but input (X) to our model. Any input to a model must be given in the form of a vector. Hence all the images have to be converted into a fixed size vector which can then be fed as input to a Neural Network. For this purpose, transfer learning has been used. 
+
+### 4.1 Transfer Learning 
+
+Transfer learning (TL) is a research problem in machine learning (ML) that focuses on storing knowledge gained while solving one problem and applying it to a different but related problem [8]. For example, knowledge gained while learning to recognize cars could apply when trying to recognize trucks. Transfer learning is popular in deep learning given the enormous resources required to train deep learning models or the large and challenging datasets on which deep learning models are trained. In transfer learning, we first train a base network on a base dataset and task, and then we repurpose the learned features, or transfer them, to a second target network to be trained on a target dataset and task. This process will tend to work if the features are general, meaning suitable to both base and target tasks, instead of specific to the base task. 
+
+#### 4.1.1 Pre-Training
+
+When we train the network on a large dataset(for example: ImageNet) , we train all the parameters of the neural network and therefore the model is learned. It may take hours on your GPU. 
+
+#### 4.1.2  Fine Tuning
+
+We can give the new dataset to fine tune the pre-trained CNN. Consider that the new dataset is almost similar to the original dataset used for pre-training. Since the new dataset is similar, the same weights can be used for extracting the features from the new dataset. 
+
+When the new dataset is very small, it’s better to train only the final layers of the network to avoid overfitting, keeping all other layers fixed. So in this case we remove the final layers of the pre-trained network, add new layers and retrain only the new layers. 
+
+When the new dataset is very much large, we can retrain the whole network with initial weights from the pre-trained model. 
+
+***Remark : How to fine tune if the new dataset is very different from the original dataset ?***
+
+The earlier features of a ConvNet contain more generic features (e.g. edge detectors or color blob detectors), but later layers of the ConvNet becomes progressively more specific to the details of the classes contained in the original dataset. The earlier layers can help to extract the features of the new data. So it will be good if we fix the earlier layers and retrain the rest of the layers, if we have only small amount of data. 
+
+
+
 
 
