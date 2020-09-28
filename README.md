@@ -122,3 +122,11 @@ Captions are something that will be predicted by the model. So during the traini
 
 When the model is given a batch of sentences as input, the sentences maybe of different lengths. Hence to complete the 2D matrix or batch of sentences, zeros have been filled in for shorter sentences to make them equal in length to the longer sentences. The length of all the sentences have been fixed i.e equal to the length of the longest sentence in our vocabulary. 
 
+## 6. Data Preparation using Generator Function
+
+This is one of the most important steps in this project. In this step the data has been formulated in a manner which will be convenient to be given as input to the deep learning model. This step is explained by taking an example [10] as follows : 
+
+### 6.1 Understanding Generator function with the help of an example.  
+Let us consider we have 3 images and their 3 corresponding captions as shown in Figure 3,4 and 5. 
+
+
