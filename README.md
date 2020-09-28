@@ -129,4 +129,4 @@ This is one of the most important steps in this project. In this step the data h
 ### 6.1 Understanding Generator function with the help of an example.  
 Let us consider we have 3 images and their 3 corresponding captions as shown in Figure 3,4 and 5. 
 
-
+<img src="Image/Example.png" style="width:800px;height:300px;">
