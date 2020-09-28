@@ -113,5 +113,12 @@ In this project, transfer learning has been used to extract features from images
 
 The whole ResNet model has not been trained from scratch. The Convolutional base has been used as a feature extractor. After the convolutional base, a Global average pooling layer has been used to reduce the size of the activation map. Global Average Pooling takes a single channel at a time and averages all the values in that channel to convert it into a single value. The convolutional base produces an activation map of (7,7,2048). The Global Average Pooling layer takes the average of 7*7 (=49) pixels across all the 2048 channels and reduces the size of the activation map to (1,1,2048). So given an image, the model converts it into 2048 dimensional vector. These feature vectors are generated for all the images of the training set and later will be sent to the final image captioning model to make predictions. Similarly we encode all the test images and save their 2048 length vectors on the disk to be used later. 
 
+## 5. Data Pre-processing : Captions 
 
+Captions are something that will be predicted by the model. So during the training period, captions are the target variables (Y) that the model is learning to predict. But the prediction of the entire caption, given the image does not happen at once. Caption has to be predicted **word by word**. Thus each word has to be encoded into a fixed size vector. To map each word in our vocabulary to some index, a python dictionary called word_to_idx has been created. Also the model outputs numbers which have to be decoded to form captions. Hence another python dictionary called idx_to_word to map each index with a word in the vocabulary has been created. These two Python dictionaries have been used as follows:
+
+* word_to_idx[‘abc’] -> returns index of the word ‘abc’
+* idx_to_word[k] -> returns the word whose index is ‘k’
+
+When the model is given a batch of sentences as input, the sentences maybe of different lengths. Hence to complete the 2D matrix or batch of sentences, zeros have been filled in for shorter sentences to make them equal in length to the longer sentences. The length of all the sentences have been fixed i.e equal to the length of the longest sentence in our vocabulary. 
 
