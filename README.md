@@ -130,3 +130,26 @@ This is one of the most important steps in this project. In this step the data h
 Let us consider we have 3 images and their 3 corresponding captions as shown in Figure 3,4 and 5. 
 
 <img src="Image/Example.png" style="width:800px;height:300px;">
+
+
+The first two images and their captions are used to train the model and the third image is used to test the model. The challenge is to frame this as a **supervised learning problem**, how does the data matrix look like and how many data points we have. Firstly, the images need to be converted into their corresponding 2048 length feature vector. Let Image_1 and Image_2 be the feature vectors of of train images viz Figure 3 and Figure 4. Secondly, a vocabulary is built for the first two(train) captions by adding the two tokens “startseq” and “endseq” in both the captions. 
+
+* Caption_1 -> “startseq the black cat sat on grass endseq”=
+* Caption_2 -> “startseq the white cat is walking on road endseq”
+
+-> vocab = {black, cat, endseq, grass, is, on, road, sat, startseq, the, walking, white}
+
+An index is given to each word in the vocabulary as follows : 
+
+black-1, cat-2, endseq-3, grass-4, is-5, on-6, road-7, sat-8, startseq-9, the-10, walking-11, white-12
+
+Now this can be framed as a supervised learning problem where we have a set of data points D = {Xi,Yi}, where Xi is the feature vector of data point ‘i’ and Yi is the corresponding target variable. 
+Image vector is the input and the caption is what we need to predict. But the way in which a caption is predicted is as follows : 
+
+* In the first step we provide the image vector and the first word as input and try to predict the second word i.e. **Input = Image_1 + ‘startseq’**; **Output = ‘the’**
+* Then we provide image vector and the first two words as input and try to predict the third word, i.e. **Input = Image_1 + ‘startseq the’**; **Output = ‘cat’**
+* And so on…
+
+
+Thus the data points for one image and its corresponding caption can be summarised as shown in figure 6. 
+
