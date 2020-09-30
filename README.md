@@ -153,3 +153,8 @@ Image vector is the input and the caption is what we need to predict. But the wa
 
 Thus the data points for one image and its corresponding caption can be summarised as shown in figure 6. 
 
+***NOTE : One image+caption is not a single data point but are multiple data points depending on the length of the caption.***
+
+Similarly if we consider both the images and their captions, the data matrix will look as shown in figure 7.
+
+
