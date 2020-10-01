@@ -163,6 +163,8 @@ Similarly if we consider both the images and their captions, the data matrix wil
 
 Thus, we can conclude from the example that in every data point, it’s not just the image that goes as input to the system, but also, a partial caption which helps to predict the next word in the sequence. However we cannot pass the actual English text of the caption, rather we pass the sequence of indices where each index represents a unique word. Since we had already created a dictionary word_to_idx, the data matrix after replacing the words with their indices is shown in figure 8. 
 
-
+<img src="Image/word_to_idx.png" style="width:800px;height:300px;">
 
 The model uses batch processing and due to that we need to make sure that each sequence is of equal length. Hence we need to append 0’s (zero padding) at the end of each sequence. For this we find out the maximum length, a caption has in the whole dataset. The maximum length of a caption in our dataset is 34. So we append those many number of zeros which will lead to every sequence having a length of 34. The data matrix will then look as shown in figure 9.
+
+<img src="Image/Appending zeros.png" style="width:800px;height:300px;">
