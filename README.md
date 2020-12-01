@@ -196,4 +196,9 @@ Image feature vector along with the partial sequence(caption) will be given to t
 
 Since the input consists of two parts, an image vector and a partial caption, the Sequential API provided by the Keras library cannot be used. For this reason, the Functional API has been used which allows to create Merge Models. The plot shown in figure 12 helps to visualise the structure of the network and better understand the two stream of inputs. 
 
+<img src="Image/Flowchart of Architecture.png" style="width:800px;height:300px;">
 
+*Note : Since we have used a pre-trained embedding layer, we had to freeze it (trainable = False), before training the model, so that it does not get updated during the backpropagation.*
+
+
+Image vector is nothing but the output of ResNet model we had used for encoding. We then add a Dense layer of 256 neurons to squeeze the output of ResNet from 2048 to 256. The LSTMs also give the hidden vector of size 256. Now both the outputs are concatenated and sent to a MLP i.e. Multilayer Perceptron. The MLP is just a decoder that predicts what should be the next word. The output layer has neurons equal to the vocabulary size. The output of the model is basically a probability distribution over the entire vocabulary. Since there are multiple outputs possible from the output layer, we have used categorical cross entropy as the loss function. The optimizer used to optimize the loss is the Adam optimizer. 
