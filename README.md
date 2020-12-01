@@ -186,3 +186,8 @@ This section describes how indices of words of a caption have been converted int
 
 *Note : Words that are present in our vocab but are not there in the glove embeddings file will be substituted by all zeros(200-dimensional).*
 
+## 7. Image Captioning - Model Architecture 
+
+Image feature vector along with the partial sequence(caption) will be given to the model and the next word in the sequence is generated as the output. Then the output is again appended to the input and next word in the sequence is generated . This process continues until the model generates an ‘endseq’ token which marks the end of the caption. Figure 10 shows the high level overview of the model architecture. 
+
+
