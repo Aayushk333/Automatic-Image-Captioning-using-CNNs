@@ -168,3 +168,14 @@ Thus, we can conclude from the example that in every data point, it’s not just
 The model uses batch processing and due to that we need to make sure that each sequence is of equal length. Hence we need to append 0’s (zero padding) at the end of each sequence. For this we find out the maximum length, a caption has in the whole dataset. The maximum length of a caption in our dataset is 34. So we append those many number of zeros which will lead to every sequence having a length of 34. The data matrix will then look as shown in figure 9.
 
 <img src="Image/Appending zeros.png" style="width:800px;height:300px;">
+
+
+In this example we had considered only 2 images and captions which lead to a generation of 15 data points. However in our actual training dataset there are 6000 images, each having 5 captions. This makes a total of 30,000 images and captions. Even if we assume that each caption is just 7 words long, it will lead to a total of 30000*7 = 210000 data points. 
+
+Size of the data matrix = n*m  , 
+where  n-> number of data points (assumed as 210000) and m-> length of each data point
+
+Clearly m = Length of image vector(2048) + Length of partial caption(x) 
+                 = 2048 + x
+
+x here is not equal to 34. This is because every word will be mapped to a higher dimensional space through some word embedding techniques. In this project , instead of training an embedded layer from scratch, Glove vectors have been used which is again an application of transfer learning.  Glove vectors convert each word into a 200-dimensional vector. Since each partial caption contains 34 indices , where each index is a vector of length 200. Therefore, x = 34*200 = 6800. Hence m = 2048 + 6800 = 8848. Finally the size of the data matrix = 210000 * 8848 = 1,85,80,80,000 blocks. Now even if we assume that 1 block takes 2 byte, then, to store this data matrix, we will require more than 3GB of main memory. This is a very huge requirement and will make the system very slow. For this reason I have used Data Generator which is a functionality that is natively implemented in python. With SGD, we do not calculate the loss on the entire data set to update the gradients. Rather in every iteration, we calculate the loss on a batch of data points (typically 64, 128, 256, etc.) to update the gradients [9]. This means that we do not require to store the entire dataset in the memory at once. Even if we have the current batch of points in the memory, it is sufficient for our purpose. A generator function in Python is used exactly for this purpose. It’s like an iterator which resumes the functionality from the point it left the last time it was called.
