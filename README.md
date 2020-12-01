@@ -191,3 +191,9 @@ This section describes how indices of words of a caption have been converted int
 Image feature vector along with the partial sequence(caption) will be given to the model and the next word in the sequence is generated as the output. Then the output is again appended to the input and next word in the sequence is generated . This process continues until the model generates an ‘endseq’ token which marks the end of the caption. Figure 10 shows the high level overview of the model architecture. 
 
 
+<img src="Image/High Level Architecture.png" style="width:800px;height:300px;">
+
+
+Since the input consists of two parts, an image vector and a partial caption, the Sequential API provided by the Keras library cannot be used. For this reason, the Functional API has been used which allows to create Merge Models. The plot shown in figure 12 helps to visualise the structure of the network and better understand the two stream of inputs. 
+
+
